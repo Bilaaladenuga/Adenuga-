@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discount Calculator</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 3px;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Discount Calculator</h1>
+  
+  <label for="original-price">Original Price:</label>
+  <input type="number" id="original-price" placeholder="Enter the original price">
+
+  <label for="discount-percentage">Discount Percentage:</label>
+  <input type="number" id="discount-percentage" placeholder="Enter the discount percentage">
+
+  <button onclick="calculateDiscount()">Calculate Discount</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateDiscount() {
+      var originalPrice = parseFloat(document.getElementById("original-price").value);
+      var discountPercentage = parseFloat(document.getElementById("discount-percentage").value);
+
+      if (isNaN(originalPrice) || isNaN(discountPercentage)) {
+        document.getElementById("result").innerHTML = "Please enter valid numbers.";
+        return;
+      }
+
+      var discountAmount = (originalPrice * discountPercentage) / 100;
+      var discountedPrice = originalPrice - discountAmount;
+
+      var resultText = "Discounted Price: $" + discountedPrice.toFixed(2) + " (Save $" + discountAmount.toFixed(2) + ")";
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>
